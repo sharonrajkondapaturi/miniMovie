@@ -3,7 +3,7 @@ import {MagnifyingGlass} from 'react-loader-spinner'
 import axios from 'axios'
 import { IoSearchSharp } from "react-icons/io5";
 import MovieCard from '../MovieCard'
-import './index.css'
+import { Navcontainer,MovieInput, MovieInputContainer, PrimaryContainer, SearchButton, Failure, Movieunlist, NoresultsImage, LoadingContainer,StatusContainer } from './styleComponents.js';
 
 //the below object apiStatus is to set the status of the page
 const apiStatus = {
@@ -56,7 +56,7 @@ const Home = ()=>{
 
    //it is a loading screen 
     const onProgress = ()=>(
-        <div className='loading-container'>
+        <LoadingContainer>
         <MagnifyingGlass
             visible={true}
             height="80"
@@ -67,34 +67,32 @@ const Home = ()=>{
             glassColor="#c0efff"
             color="#e15b64"
             />
-        </div>
+        </LoadingContainer>
         )
     
     //it is a success page when the user click the search icon and the data is successfully fetched
     const onSuccess =()=>{
         return(
-        <ul className='movie-unlist'>
+        <Movieunlist>
             {movieDetails.length !==0? movieDetails.map(eachMovie=>
          <MovieCard movies={eachMovie}/>
         ):<div>
-            <img src="https://static.tildacdn.net/tild3432-3335-4337-b130-363866343062/No_results_1.svg"
+            <NoresultsImage src="https://static.tildacdn.net/tild3432-3335-4337-b130-363866343062/No_results_1.svg"
             alt="no-results-found"
-            className='no-results'
             />
             <p style={{textAlign:"center"}}>Type the movie in the search bar</p>
         </div>}
        
-        </ul>
+        </Movieunlist>
         )
     }
     //it is a failure page where data is not fetched succesfully
     const onFailure =()=>(
-        <div className='failure'>
+        <Failure>
             <img src="https://img.freepik.com/premium-vector/error-404-page-computer-failure-oops-concept-website-template-with-flat-line-male-character-illustration-warning-failure-404-page-internet-website-message_53562-11805.jpg"
             alt="failure-image"
-            className="no-results"
             />
-        </div>
+        </Failure>
     )
 
     //it is used to call when the apiStatus is changed
@@ -115,18 +113,18 @@ const Home = ()=>{
     },[])
 
     return(
-        <div className='background'>
-            <nav className='nav-container'>
-                <div className='movie-input-container'>
-                <input className="movie-input" type="search" value={search} onChange={onSearch} placeholder='Movies'/>
-                <button type="button" onClick={()=>onRender()} className='search-button'><IoSearchSharp/></button>
-                </div>
-            </nav>
-            <div className='primary-containers'>
-            <div className='status-container'>
+        <div>
+            <Navcontainer>
+                <MovieInputContainer>
+                <MovieInput  type="search" value={search} onChange={onSearch} placeholder='Movies'/>
+                <SearchButton type="button" onClick={()=>onRender()}><IoSearchSharp/></SearchButton>
+                </MovieInputContainer>
+            </Navcontainer>
+            <PrimaryContainer>
+            <StatusContainer>
             {onRenderStatus()}
-            </div>
-        </div>
+            </StatusContainer>
+           </PrimaryContainer>
         </div>
     )
 }

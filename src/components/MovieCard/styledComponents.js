@@ -1,5 +1,7 @@
-.movie-list{
-    @media only screen and (min-width:1280px){
+import style from 'styled-components'
+
+export const MovieList = style.li`
+@media only screen and (min-width:1280px){
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -74,42 +76,42 @@
             max-width:280px;
             height:600px;
         }
+`
+export const Dogimage = style.img`
+@media only screen and (min-width:1280px){
+    width:400px;
+    height:300px;
+    align-self:center;
 }
-.image{
-    @media only screen and (min-width:1280px){
-        width:400px;
-        height:300px;
-        align-self:center;
-    }
-    @media only screen and (max-width:1279px){
-        width:300px;
-        height:300px;
-        align-self:center;
-    }
-    @media only screen and (max-width:767px){
-        width:300px;
-        height:200px;
-        align-self:center;
-    }
-    @media only screen and (max-width:567px){
-        width:200px;
-        height:200px;
-        align-self:center;
-    }
+@media only screen and (max-width:1279px){
+    width:300px;
+    height:300px;
+    align-self:center;
 }
-.sub-headings{
-    font-family:cursive;
+@media only screen and (max-width:767px){
+    width:300px;
+    height:200px;
+    align-self:center;
+}
+@media only screen and (max-width:567px){
+    width:200px;
+    height:200px;
+    align-self:center;
+}
+`
+export const SubHeadings = style.p`
+font-family:cursive;
     font-size:24px;
     font-weight: 550;
-}
-.main-details{
-    font-family: Roboto;
+`
+export const MainDetails = style.span`
+font-family: Roboto;
     font-size:24px;
     color:#ffffff;
-}
-.title{
+`
+export const Title = style.h1`
 font-family:cursive;
 color:#000000;
 font-weight: bold;
 text-align: center;
-}
+`
